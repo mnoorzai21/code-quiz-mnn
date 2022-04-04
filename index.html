@@ -11,22 +11,67 @@
 </head>
 
 <body>
-    <header>
-        <ul>
-            <li></li>
-        </ul>
-    </header>
-    <Main>
-        <div>
-            <p></p>
-        </div>
-    </Main>
-    <footer>
-        <ul>
-            <li></li>
-        </ul>
-    </footer>
+    <header class="header">
 
+        <div class="highscore">
+            <!-- Show view highscore in the top left -->
+            <a href="#">View Highscore</a>
+        </div>
+        <div class="timer">
+            <!-- Show timer in the top right -->
+            <h3>Time:</h3>
+        </div>
+    </header>
+    <Main class="container">
+        <div class="quiz">
+            <div class="message">
+                <!-- message for coding quiz -->
+                <h1>Please click the start button to start the quiz</h1>
+                <p>This is a time base quiz you have 60 seconds to answer the questions. Note, every incorrect answer decreases your time by ten seconds. </p>
+            </div>
+            <!-- A start button -->
+            <div>
+                <!-- <div class="start-quiz"> -->
+                <button type="start-quiz" class="start-quiz">Start Quiz</button>
+            </div>
+            <div class="question">
+                <h3>Question: <span id="question-title"></span></h3>
+            </div>
+            <!-- An ol list of 4 answers f -->
+            <div class="answerButtons">
+            </div>
+            <div class="alertUser"></div>
+        </div>
+        <!-- clicking the answer -->
+        <!-- showing the correct/wrong answer -->
+        <div class="result">
+            <h3>Quiz Ended!</h3>
+        </div>
+        <div class="correct-answer"></div>
+        <div class="initial">
+            <h4>Initial</h4>
+            <input type="text" class="userInitial" placeholder="Please type your initials">
+            <div><button class="submitBtn">Submit</button></div>
+        </div>
+        <div>
+            <button class="next">Next</button>
+        </div>
+        <div class="savedHighScore">
+            <h3>Highscores</h3>
+            <div id="highscoreDetail"></div>
+            <div>
+                <button type="button" class="clearHighscores">Clear Highscores</button>
+            </div>
+            <div>
+                <button class="goBack" type="button" id="goBack">Go Back</button>
+            </div>
+        </div>
+        </div>
+
+    </Main>
+    <footer class="footer">
+        <p>This work is done by Nabi Noorzai</p>
+    </footer>
     <script src="./assets/script/script.js"></script>
 </body>
 
