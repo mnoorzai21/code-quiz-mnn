@@ -170,10 +170,6 @@ function clearHighscore() {
 }
 
 document.getElementById("clear").onclick = clearHighscore;
-
-
-showHighscore();
-
 submitBtnEl.addEventListener("click", function(e) {
     highscores(e)
     savedHighScoreEl.style.display = "block"
