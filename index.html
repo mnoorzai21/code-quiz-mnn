@@ -17,46 +17,43 @@
             <!-- Show view highscore in the top left -->
             <a href="#">View Highscore</a>
         </div>
-        <div class="timer">
+        <div class="timer" id="timer">
             <!-- Show timer in the top right -->
             <h3>Time:</h3>
         </div>
     </header>
     <Main class="container">
         <div class="startQuiz">
-            <div class="message">
-                <!-- message for coding quiz -->
-                <h1>Please click the start quiz button to start the quiz</h1>
-                <p>This is a time base quiz you have 60 seconds to answer the questions. Note, every incorrect answer decreases your time by ten seconds. </p>
-            </div>
+            <!-- message for coding quiz -->
+            <h1>Please click the start quiz button to start the quiz</h1>
+            <p>This is a time base quiz you have 60 seconds to answer the questions. Note, every incorrect answer decreases your time by ten seconds. </p>
             <!-- A start button -->
-            <div>
-                <!-- <div class="start-quiz"> -->
-                <button type="start" class="start">Start Quiz</button>
-            </div>
-            <div class="question">
-                <h3>Question: <span class="questionTitle"></span></h3>
-            </div>
+            <button type="start" class="start">Start Quiz</button>
+        </div>
+        <div class="question">
+            <h3>Question: <span class="questionTitle" id="questionTitle"></span></h3>
             <!-- An ol list of 4 answers f -->
-            <div class="answerButtons">
-            </div>
+            <div class="answerButtons"></div>
+            <!-- clicking the answer -->
             <div class="alertUser"></div>
         </div>
-        <!-- clicking the answer -->
         <!-- showing the correct/wrong answer -->
-        <div class="result"></div>
-        <div class="correctAnswer"></div>
-        <div class="initial">
-            <h4>Initial</h4>
-            <input type="text" class="userInitial" placeholder="Please type your initials">
-            <div><button class="submitBtn">Submit</button></div>
+        <div class="result">
+            <h3></h3>
+            <div class="correctAnswer"></div>
+            <div class="initial">
+                <h4>Initial</h4>
+                <input type="text" class="userInitial" placeholder="Please type your initials">
+                <div><button class="submitBtn">Submit</button></div>
+            </div>
         </div>
-        <div class="wrapper">
+
+        <div class="savedHighScore">
             <h1>Highscores</h1>
             <ol id="highscores"></ol>
 
-            <button>Go Back</button>
             <button id="clear">Clear Highscores</button>
+            <button id="goBack">Go Back</button>
         </div>
         </div>
 

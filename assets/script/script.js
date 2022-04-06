@@ -27,9 +27,9 @@ var viewHighscoreEl = document.querySelector(".viewHighscore");
 var userInitialEl = document.querySelector(".userInitial");
 var submitBtnEl = document.querySelector(".submitBtn");
 var savedHighScoreEl = document.querySelector(".savedHighScore");
-var highscoreDetailEl = document.querySelector(".highscoreDetail");
-var clearHighscoresEl = document.querySelector(".clearHighscores");
-var goBackEl = document.querySelector(".goBack");
+var highscoresEl = document.querySelector("#highscores");
+var clearHighscoresEl = document.querySelector("#clear");
+var goBackEl = document.querySelector("#goBack");
 
 
 var questionIndex = 0;
@@ -65,10 +65,9 @@ function time() {
 
 function question() {
 
-    questionEl.innerText = questionArray[questionIndex].showQuestion;
     questionEl.style.display = "block"
     var currentQuestion = questionArray[questionIndex]
-    var titleEl = document.querySelector(".questionTitle");
+    var titleEl = document.querySelector("#questionTitle");
     titleEl.textContent = currentQuestion.showQuestion;
 
     choiceEl.innerHTML = "";
@@ -81,7 +80,7 @@ function question() {
         choiceEl.appendChild(answerBtn);
 
         answerBtn.addEventListener("click", btnClick);
-    })
+    });
 
 
 }
@@ -114,72 +113,71 @@ function countCorrectAns() {
 
 }
 
-function showHighscore() {
+function highscore(e) {
+    e.preventDefault()
 
-    var highscore = JSON.parse(window.localStorage.getItem("highscores")) || [];
+    var storeHighscore = localStorage.getItem("savedHighScore")
+    var scoreCountArray;
 
-    highscore.sort(function(a, b) {
-        return b.score - a.score;
-    });
+    if (storeHighscore === null) {
+        scoreCountArray = []
+    } else {
+        scoreCountArray = JSON.parse(storeHighscore)
+    }
 
-    highscore.forEach(function(score) {
+    correctAnswerEl.textContent = correctAnsCount
 
-        var liTag = document.createElement("li");
-        liTag.textContent = score.initials + " - " + score.score;
+    var saveHighscore = {
+        initial: userInitialEl.value.toUpperCase(),
+        saveCorrectAns: correctAnswerEl.textContent
+    }
 
-        var olEl = document.getElementById("highscores");
-        olEl.appendChild(liTag);
-    });
+    scoreCountArray.push(saveHighscore);
+
+    var scoreCountString = JSON.stringify(scoreCountArray);
+    localStorage.setItem("highscore", scoreCountString);
+
+    viewHighscore()
 }
+var i = 0;
 
-function clearHighscores() {
-    window.localStorage.removeItem("highscores");
-    window.location.reload();
-}
+function viewHighscore() {
+    var storedHighscore = localStorage.getItem("highscore");
 
+    if (storedHighscore === null) {
+        return;
+    }
 
-showHighscore();
-
-function saveHighscore() {
-
-    var initials = userInitialEl.value.trim();
-
-    if (initials !== "") {
-
-        var highscores =
-            JSON.parse(window.localStorage.getItem("highscores")) || [];
-
-        var newScore = {
-            score: time,
-            initials: initials
-        };
-
-        highscores.push(newScore);
-        window.localStorage.setItem("highscores", JSON.stringify(highscores));
-
-        window.location.href = "index.html";
+    var scoreCountObject = JSON.parse(storedHighscore);
+    for (; i < scoreCountObject.length; i++) {
+        var newHighscore = document.createElement("h4");
+        newHighscore.innerHTML = scoreCountObject[i].initial + " - " + scoreCountObject[i].saveCorrectAns;
+        highscoresEl.appendChild(newHighscore)
     }
 }
 
-submitBtnEl.onclick = saveHighscore;
+clearHighscoresEl.addEventListener("click", function() {
 
+    localStorage.removeItem("highscores")
+    highscoresEl.textContent = ""
 
-function clearHighscore() {
-    window.localStorage.removeItem("highscores");
-    window.location.reload();
-}
+});
 
-document.getElementById("clear").onclick = clearHighscore;
 submitBtnEl.addEventListener("click", function(e) {
-    highscores(e)
+    highscore(e)
     savedHighScoreEl.style.display = "block"
     resultEl.style.display = "none"
-    HighscoreEl.style.display = "block"
+    viewHighscoreEl.style.display = "block"
 })
-
 viewHighscoreEl.addEventListener("click", function(e) {
-    viewHighscoreEl(e)
+    viewHighscore(e)
     savedHighScoreEl.style.display = "block"
+
+})
+goBackEl.addEventListener("click", function() {
+    savedHighScoreEl.style.display = "none"
+    startQuizEl.style.display = "block"
+    location.reload();
 
 })
 

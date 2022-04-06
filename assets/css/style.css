@@ -10,20 +10,40 @@ body {
     color: rgb(218, 209, 209);
 }
 
+a {
+    color: rgb(196, 174, 133);
+    text-decoration: none;
+}
+
+.startQuiz p {
+    text-align: start;
+    padding: 20px 10px 50px 10px;
+}
+
+a:hover {
+    background-color: #1f557b;
+    padding: 5px;
+}
+
 .header {
-    display: block;
-    position: relative;
-    padding: 10px;
+    display: flex;
+    padding: 20px 0;
+    height: 60px;
     font-size: 16px;
     border-bottom: 2px solid #fea63a;
 }
 
-.timer {
+#timer {
     position: absolute;
-    margin-top: 0;
-    margin-right: 0;
-    padding: 0 40px 0 20px;
-    font-size: 25px;
+    right: 15px;
+    padding: 0 50px 0 0;
+    font-size: 20px;
+}
+
+.correctAns {
+    font-size: 18px;
+    text-align: center;
+    padding-top: 10px;
 }
 
 .viewHighscore {
@@ -36,21 +56,12 @@ body {
     background-color: #1f557b;
 }
 
-a {
-    color: rgb(196, 174, 133);
-}
-
-a:hover {
-    background-color: #1f557b;
-    padding: 5px;
-}
-
 .container {
     background-color: #00243d;
     border: 5px solid #fea63a;
     position: absolute;
-    width: 800px;
-    height: 400px;
+    width: 900px;
+    height: 500px;
     margin: auto;
     padding: 10px;
     top: 0;
@@ -70,15 +81,8 @@ h1 {
     padding: 10px;
 }
 
-p {
-    text-align: center;
-}
-
 .start,
-.submitBtn,
-.next,
-.clearHighscores,
-.goBack {
+.submitBtn {
     font-weight: bold;
     height: 30px;
     width: 200px;
@@ -90,12 +94,14 @@ p {
     color: rgb(196, 174, 133);
 }
 
-.start-quiz:hover,
-.goBack:hover,
+.result,
+.savedHighScore {
+    display: none;
+}
+
+.start:hover,
 .answerButtons:hover,
-.submitBtn:hover,
-.next:hover,
-.clearHighscores:hover {
+.submitBtn:hover {
     opacity: 0.8;
     border: 2px solid rgb(196, 174, 133);
 }
@@ -133,6 +139,10 @@ p {
     height: 28px;
 }
 
+.initial h4 {
+    padding: 10px;
+}
+
 .choice {
     height: 40px;
     font-size: 16px;
@@ -146,23 +156,31 @@ p {
     cursor: pointer;
 }
 
-.userInitial {
-    padding: 10px;
-}
-
 .highScoreBtn {
     display: flex;
     justify-content: center;
     margin-top: 10px;
 }
 
-.savedHighScore h3,
-.alertUser {
+.savedHighScore h1 {
     padding: 5px;
     color: rgb(196, 174, 133);
     display: flex;
-    justify-content: center;
-    font-size: 25px;
+}
+
+#clear,
+#goBack {
+    padding: 10px;
+    font-weight: bold;
+    background-color: rgb(196, 174, 133);
+    border-radius: 5px;
+    margin: 5px;
+}
+
+#clear:hover,
+#goBack:hover {
+    opacity: 0.8;
+    border: 2px solid rgb(196, 174, 133);
 }
 
 .footer {
