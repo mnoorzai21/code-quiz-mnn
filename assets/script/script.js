@@ -38,8 +38,6 @@ var correctAnsCount = 0;
 var userInitial = "";
 var timeInterval;
 
-
-
 startQuizEl.addEventListener("click", function() {
     startQuizEl.style.display = "none";
     viewHighscoreEl.style.display = "none";
@@ -120,8 +118,8 @@ function showHighscore() {
 
     var highscore = JSON.parse(window.localStorage.getItem("highscores")) || [];
 
-    highscore.sort(function(i, j) {
-        return j.score - i.score;
+    highscore.sort(function(a, b) {
+        return b.score - a.score;
     });
 
     highscore.forEach(function(score) {
@@ -133,6 +131,14 @@ function showHighscore() {
         olEl.appendChild(liTag);
     });
 }
+
+function clearHighscores() {
+    window.localStorage.removeItem("highscores");
+    window.location.reload();
+}
+
+
+showHighscore();
 
 function saveHighscore() {
 
@@ -151,7 +157,7 @@ function saveHighscore() {
         highscores.push(newScore);
         window.localStorage.setItem("highscores", JSON.stringify(highscores));
 
-        window.location.href = "highscores.html";
+        window.location.href = "index.html";
     }
 }
 
@@ -165,6 +171,7 @@ function clearHighscore() {
 
 document.getElementById("clear").onclick = clearHighscore;
 
+
 showHighscore();
 
 submitBtnEl.addEventListener("click", function(e) {
@@ -173,7 +180,6 @@ submitBtnEl.addEventListener("click", function(e) {
     resultEl.style.display = "none"
     HighscoreEl.style.display = "block"
 })
-
 
 viewHighscoreEl.addEventListener("click", function(e) {
     viewHighscoreEl(e)
