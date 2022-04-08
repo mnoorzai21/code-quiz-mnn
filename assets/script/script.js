@@ -51,7 +51,7 @@ startQuizEl.addEventListener("click", function() {
 function time() {
     var timeInterval = setInterval(function() {
         timeLeft--;
-        timerEl.textContent = "Time: " + timeLeft;
+        timerEl.textContent = "Time:  " + timeLeft;
 
         if (timeLeft <= 0) {
             clearInterval(timeInterval);
@@ -100,6 +100,7 @@ function btnClick() {
         alertUserEl.textContent = "Quiz Ended"
         questionEl.style.display = "none"
         resultEl.style.display = "block"
+        choiceEl.style.display = "none"
 
     } else {
         question();
@@ -108,12 +109,15 @@ function btnClick() {
 
 function countCorrectAns() {
 
+
     correctAnsCount++
     correctAnswerEl.textContent = "You answered " + correctAnsCount + " out of " + questionArray.length + " correctly!";
 
 }
 
 function highscore(e) {
+
+    choiceEl.style.display = "none"
     e.preventDefault()
 
     var storeHighscore = localStorage.getItem("savedHighScore")
