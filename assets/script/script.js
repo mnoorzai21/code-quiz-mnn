@@ -1,21 +1,3 @@
-// building a code quiz
-// declare variables with querySlector
-// declare var for array list of quesitons
-// addEventListener click
-// 1. needs a start button
-// click button
-// 2. timer starts
-// funciton to start counting down from 60 sec
-// 3. presents the question 
-// 4. four anssers appear
-// 5. choose the answer
-// 6. if the answer is wrong subtruct time by 10 sec
-// 7. another question appears
-// 8. when all questions answered or time hits 0 it stops
-// 9. then the game is over
-// 10. then aves initials and scores
-
-
 var startQuizEl = document.querySelector(".start");
 var timerEl = document.querySelector(".timer");
 var questionEl = document.querySelector(".questionTitle");
