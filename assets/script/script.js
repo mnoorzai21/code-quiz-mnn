@@ -1,5 +1,6 @@
 var startQuizEl = document.querySelector(".start");
 var timerEl = document.querySelector(".timer");
+var questionText = document.querySelector(".question")
 var questionEl = document.querySelector(".questionTitle");
 var choiceEl = document.querySelector(".answerButtons");
 var alertUserEl = document.querySelector(".alertUser");
@@ -91,15 +92,14 @@ function btnClick() {
 
 function countCorrectAns() {
 
-
     correctAnsCount++
     correctAnswerEl.textContent = "You answered " + correctAnsCount + " out of " + questionArray.length + " correctly!";
 
 }
 
 function highscore(e) {
-
     choiceEl.style.display = "none"
+    questionText.style.display = "none";
     e.preventDefault()
 
     var storeHighscore = localStorage.getItem("savedHighScore")
@@ -128,6 +128,7 @@ function highscore(e) {
 var i = 0;
 
 function viewHighscore() {
+
     var storedHighscore = localStorage.getItem("highscore");
 
     if (storedHighscore === null) {
@@ -151,13 +152,15 @@ clearHighscoresEl.addEventListener("click", function() {
 
 submitBtnEl.addEventListener("click", function(e) {
     highscore(e)
-    savedHighScoreEl.style.display = "block"
-    resultEl.style.display = "none"
-    viewHighscoreEl.style.display = "block"
+    savedHighScoreEl.style.display = "block";
+    resultEl.style.display = "none";
+    viewHighscoreEl.style.display = "block";
+
 })
 viewHighscoreEl.addEventListener("click", function(e) {
     viewHighscore(e)
-    savedHighScoreEl.style.display = "block"
+    savedHighScoreEl.style.display = "block";
+
 
 })
 goBackEl.addEventListener("click", function() {
